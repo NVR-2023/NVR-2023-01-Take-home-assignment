@@ -12,7 +12,11 @@
   "description": "",
   "type": "module",
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "@types/node": "^22.9.0",
     "tsx": "^4.19.2"
+  },
+  "dependencies": {
+    "express": "^4.21.1"
   }
 }
