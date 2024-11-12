@@ -7,7 +7,7 @@ const createGlobalConfig = (): GlobalConfigType | null => {
   const DEFAULT_PORT = 3000;
   const DEFAULT_API_BASE_URL = "/api/v1/";
 
-  const GLOBAL_CONFIG: GlobalConfigType = {
+  const globalConfig: GlobalConfigType = {
     PORT: Number(process.env.PORT) || DEFAULT_PORT,
     NODE_ENV: (process.env.NODE_ENV as "development" | "production") || "development",
     API_BASE_URL: process.env.API_BASE_URL || DEFAULT_API_BASE_URL,
@@ -19,7 +19,7 @@ const createGlobalConfig = (): GlobalConfigType | null => {
     DATABASE_URL: process.env.DATABASE_URL,
   };
 
-  const validationResult = globalConfigZodSchema.safeParse(GLOBAL_CONFIG);
+  const validationResult = globalConfigZodSchema.safeParse(globalConfig);
   if (!validationResult.success) {
     const validationErrorsArray = validationResult.error.errors.map((error) => ({
       field: error.path.join("."),
@@ -36,7 +36,7 @@ const createGlobalConfig = (): GlobalConfigType | null => {
     return null;
   }
 
-  return GLOBAL_CONFIG;
+  return globalConfig;
 };
 
 export default createGlobalConfig;
