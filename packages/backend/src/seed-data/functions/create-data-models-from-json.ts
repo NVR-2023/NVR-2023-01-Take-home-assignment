@@ -10,11 +10,12 @@ const createDataModelsFromJson = (): SecurityType[] => {
 
     data = data.map((security) => ({
       ...security,
-      trend: parseFloat(security.trend as unknown as string), 
+      trend: parseFloat(security.trend as unknown as string),
       prices: security.prices.map((price: any) => ({
         ...price,
-        close: parseFloat(price.close), 
-        volume: parseInt(price.volume), 
+        date: new Date(price.date),
+        close: parseFloat(price.close),
+        volume: parseInt(price.volume),
       })),
     }));
 
