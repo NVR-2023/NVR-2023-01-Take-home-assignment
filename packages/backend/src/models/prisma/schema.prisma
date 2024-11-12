@@ -9,8 +9,8 @@ datasource db {
 
 }
 
-model Stock {
-  @@map("stocks")
+model Security {
+  @@map("securities")
 
   id            Int      @id @default(autoincrement())
   ticker        String   @unique
@@ -27,12 +27,12 @@ model Stock {
 model Price {
   @@map("prices")
 
-  id        Int      @id @default(autoincrement())  
-  stockId   Int      
-  date      DateTime  
-  close     Decimal  @db.Decimal(10, 4)  
-  volume    Int      
-  stock     Stock    @relation(fields: [stockId], references: [id])  
+  id           Int      @id @default(autoincrement())  
+  securityId   Int      
+  date         DateTime  
+  close        Decimal  @db.Decimal(10, 4)  
+  volume       Int      
+  security     Security @relation(fields: [securityId], references: [id])  
 }
 
 

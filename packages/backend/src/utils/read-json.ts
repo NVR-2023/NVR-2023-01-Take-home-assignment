@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { SecurityType } from "types/seed-data-types";
+import { SecurityType } from "types/data-types";
 
 const readJsonFile = (filePath: string): SecurityType[] => {
   const jsonData = fs.readFileSync(filePath, "utf-8");

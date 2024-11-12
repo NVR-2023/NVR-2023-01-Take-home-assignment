@@ -12,3 +12,5 @@ export type SecurityType = {
   trend: number;
   prices: PriceType[];
 };
+
+
