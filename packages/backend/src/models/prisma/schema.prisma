@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+
+}
+
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+
+}
+
+model Stock {
+  @@map("stocks")
+
+  id            Int      @id @default(autoincrement())
+  ticker        String   @unique
+  securityName  String
+  sector        String
+  country       String
+  trend         Float
+  prices        Price[]  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  deletedAt     DateTime?
+}
+
+model Price {
+  @@map("prices")
+
+  id        Int      @id @default(autoincrement())  
+  stockId   Int      
+  date      DateTime  
+  close     Decimal  @db.Decimal(10, 4)  
+  volume    Int      
+  stock     Stock    @relation(fields: [stockId], references: [id])  
+}
+
+
