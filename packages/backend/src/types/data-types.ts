@@ -1,7 +1,7 @@
 export type PriceType = {
-  date: string;
-  close: string;
-  volume: string;
+  date: Date;
+  close: number;
+  volume: number;
 };
 
 export type SecurityType = {

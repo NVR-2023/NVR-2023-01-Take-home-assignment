@@ -6,7 +6,18 @@ const createDataModelsFromJson = (): SecurityType[] => {
   const filePath = path.resolve("src/seed-data/data", "data (2) (1).json");
 
   try {
-    const data: SecurityType[] = readJsonFile(filePath);
+    let data: SecurityType[] = readJsonFile(filePath);
+
+    data = data.map((security) => ({
+      ...security,
+      trend: parseFloat(security.trend as unknown as string), 
+      prices: security.prices.map((price: any) => ({
+        ...price,
+        close: parseFloat(price.close), 
+        volume: parseInt(price.volume), 
+      })),
+    }));
+
     return data;
   } catch (error) {
     console.error(`Error reading from json file ${filePath}: ${error}`);
