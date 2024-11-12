@@ -2,7 +2,6 @@ import GlobalConfigType from "types/global-config-type.js";
 import createGlobalConfig from "config/create-global-config.js";
 import app from "app";
 
-import createDataModelsFromJson from "seed-data/functions/create-data-models-from-json";
 
 const GLOBAL_CONFIG: GlobalConfigType | null = createGlobalConfig();
 if (!GLOBAL_CONFIG) {
@@ -14,7 +13,6 @@ if (!GLOBAL_CONFIG) {
 console.log("Global config successfully loaded");
 const PORT = GLOBAL_CONFIG.PORT;
 
-createDataModelsFromJson();
 app
   .listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);

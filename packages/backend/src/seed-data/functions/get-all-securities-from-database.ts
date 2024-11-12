@@ -1,7 +1,11 @@
 import prisma from "models/prisma/prisma";
 
+
 const getAllSecuritiesFromDatabase = async () => {
+  console.log("Function GET ALL entered");
+
   try {
+    console.log("Function GET ALL entered - inside block");
     const result = await prisma.security.findMany();
     return result;
     console.log("*** RESULt ***");
@@ -14,3 +18,5 @@ const getAllSecuritiesFromDatabase = async () => {
     throw new Error(`Error getting all securities from database: ${error} `);
   }
 };
+
+export default getAllSecuritiesFromDatabase
