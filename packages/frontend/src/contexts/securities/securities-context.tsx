@@ -1,17 +1,5 @@
 import { createContext } from "react";
-
-export type Security = {
-  symbol: string;
-  name: string;
-  sector: string;
-  country: string;
-  trend: string;
-};
-
-export type SecuritiesContextType = {
-  securities: Security[];
-  isLoading: boolean;
-};
+import { SecuritiesContextType } from "../../types/securities-types";
 
 export const SecuritiesContext = createContext<SecuritiesContextType>({
   securities: [],

@@ -1,13 +1,13 @@
 import { useEffect, useState, ReactNode } from "react";
 import { SecuritiesProvider } from "./securities-provider";
-import { Security, SecuritiesContextType } from "./securities-context";
+import { SecuritiesContextType, SecurityFrontendType } from "../../types/securities-types";
 
 type SecuritiesDataProviderProps = {
   children: ReactNode;
 };
 
 const SecuritiesDataProvider = ({ children }: SecuritiesDataProviderProps) => {
-  const [securities, setSecurities] = useState<Security[]>([]);
+  const [securities, setSecurities] = useState<SecurityFrontendType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const SecuritiesDataProvider = ({ children }: SecuritiesDataProviderProps) => {
       setIsLoading(true);
       try {
         const response = await fetch("/api/securities");
-        const data: Security[] = await response.json();
+        const data: SecurityFrontendType[] = await response.json();
         setSecurities(data);
       } catch (error) {
         console.error(`Error fetching securities: ${error}`);
