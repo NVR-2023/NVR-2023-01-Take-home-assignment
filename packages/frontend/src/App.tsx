@@ -1,13 +1,18 @@
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Homepage from "./pages/homepage";
+import Securities from "./pages/securities";
+import SecurityDetail from "./pages/security-details";
 
 function App() {
-
-  const test: string ="123";
-
   return (
-    <>
-      <p className="text-blue-600 bg-yellow-400"> {test}</p>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/securities" element={<Securities />} />
+        <Route path="/securities/:symbol" element={<SecurityDetail />} />
+      </Routes>
+    </Router>
   );
 }
 
