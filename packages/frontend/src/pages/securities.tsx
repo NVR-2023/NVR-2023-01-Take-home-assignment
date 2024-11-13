@@ -1,6 +1,7 @@
 import { useSecuritiesDataContext } from "../hooks/use-securities-data-context";
 import SecuritiesTable from "../sections/securities-table";
 import TableContainer from "../sections/table-container";
+import Loader from "../components/loader";
 
 const Securities = () => {
   const { securitiesData, isLoading } = useSecuritiesDataContext();
@@ -8,8 +9,7 @@ const Securities = () => {
   return (
     <div className="w-full min-h-screen p-7 bg-neutral-100">
       <TableContainer title="Securities">
-        {isLoading && <p>Loading..</p>}
-        <SecuritiesTable data={securitiesData} />
+        {isLoading ? <Loader /> : <SecuritiesTable data={securitiesData} />}
       </TableContainer>
     </div>
   );
