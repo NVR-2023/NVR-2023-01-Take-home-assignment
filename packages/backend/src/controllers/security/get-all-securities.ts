@@ -6,7 +6,7 @@ import getAllSecuritiesFromDatabase from "models/database-functions/security/get
 const getAllSecurities = async (request: Request, response: Response, next: NextFunction) => {
   try {
     const result = await getAllSecuritiesFromDatabase();
-    const successfulResponse = new SuccessfulResponse(200, "", result);
+    const successfulResponse = new SuccessfulResponse(200, "List of securities successfully retrieved", result);
     return response.status(successfulResponse.status).json(successfulResponse);
   } catch (error) {
     console.error(`An error occurred while fetching securities: ${error}`);

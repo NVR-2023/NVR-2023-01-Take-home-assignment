@@ -11,6 +11,7 @@ const handleGlobalError = (
   return response.status(statusCode).json({
     message: error.message,
     status: statusCode,
+    ...(error.errors && error.errors.length > 0 ? { errors: error.errors } : {}),
   });
 };
 

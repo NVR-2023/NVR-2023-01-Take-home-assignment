@@ -5,14 +5,13 @@ import getPricesBySecurityIdFromDatabase from "models/database-functions/price/g
 import zodIdValidationSchema from "./zod-id-validation-schema";
 
 const getPricesBySecurityId = async (request: Request, response: Response, next: NextFunction) => {
-
   const { id } = request.params;
-  const parsedId = parseInt(id);
+  const parsedId = Number(id);
 
   const validationResult = zodIdValidationSchema.safeParse(parsedId);
   if (!validationResult.success) {
     const validationErrorsArray = validationResult.error.errors.map((error) => ({
-      field: error.path.join("."),
+      field: "id",
       message: error.message,
     }));
     const validationError = new CustomError(400, "Invalid Security Id", validationErrorsArray);

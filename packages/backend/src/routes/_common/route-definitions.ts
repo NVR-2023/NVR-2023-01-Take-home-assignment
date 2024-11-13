@@ -9,7 +9,7 @@ type RouteDefinitionType = {
 
 const ROUTE_DEFINITIONS: RouteDefinitionType[] = [
   { path: "private/securities", router: securityRouter },
-  { path: "private/securities/:id", router: priceRouter },
+  { path: "private/securities/prices", router: priceRouter },
 ];
 
 export default ROUTE_DEFINITIONS;
