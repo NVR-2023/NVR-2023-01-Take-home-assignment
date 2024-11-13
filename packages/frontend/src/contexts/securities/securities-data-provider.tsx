@@ -14,9 +14,13 @@ const SecuritiesDataProvider = ({ children }: SecuritiesDataProviderProps) => {
     const fetchAllSecurities = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("/api/securities");
-        const data: SecurityFrontendType[] = await response.json();
-        setSecurities(data);
+        const urlEndpoint = "http://localhost:3000/api/v1/private/securities";
+        const response = await fetch(urlEndpoint);
+        const data = await response.json();
+        if (data.ok) {
+          const sieveData = data.data;
+          setSecurities(sieveData);
+        }
       } catch (error) {
         console.error(`Error fetching securities: ${error}`);
       } finally {

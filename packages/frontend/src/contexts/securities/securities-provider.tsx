@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import { SecuritiesContext, SecuritiesContextType } from "./securities-context";
+import { SecuritiesContext } from "./securities-context";
+import { SecuritiesContextType } from "../../types/securities-types";
 
 type SecuritiesProviderProps = {
   value: SecuritiesContextType;
