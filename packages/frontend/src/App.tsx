@@ -4,14 +4,18 @@ import Homepage from "./pages/homepage";
 import Securities from "./pages/securities";
 import SecurityDetail from "./pages/security-details";
 
+import SecuritiesDataProvider from "./contexts/securities/securities-data-provider";
+
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/securities" element={<Securities />} />
-        <Route path="/securities/:symbol" element={<SecurityDetail />} />
-      </Routes>
+      <SecuritiesDataProvider>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/securities" element={<Securities />} />
+          <Route path="/securities/:symbol" element={<SecurityDetail />} />
+        </Routes>
+      </SecuritiesDataProvider>
     </Router>
   );
 }
