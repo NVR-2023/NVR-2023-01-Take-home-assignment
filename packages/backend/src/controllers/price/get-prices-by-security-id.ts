@@ -15,7 +15,7 @@ const getPricesBySecurityId = async (request: Request, response: Response, next:
       field: error.path.join("."),
       message: error.message,
     }));
-    const validationError = new CustomError(400, "Invalid Security", validationErrorsArray);
+    const validationError = new CustomError(400, "Invalid Security Id", validationErrorsArray);
     return next(validationError);
   }
 
