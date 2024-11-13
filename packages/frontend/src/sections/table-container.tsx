@@ -10,7 +10,9 @@ const TableContainer = ({ title, children }: TableContainerProps) => {
   return (
     <Card>
       <CardHeader title={title} />
-      <CardContent>{children}</CardContent>
+      <CardContent>
+        <div className="px-5">{children}</div>
+      </CardContent>
     </Card>
   );
 };
