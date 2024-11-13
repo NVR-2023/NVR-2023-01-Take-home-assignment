@@ -10,10 +10,10 @@ export type Security = {
 
 export type SecuritiesContextType = {
   securities: Security[];
-  loading: boolean;
+  isLoading: boolean;
 };
 
 export const SecuritiesContext = createContext<SecuritiesContextType>({
   securities: [],
-  loading: true,
+  isLoading: true,
 });

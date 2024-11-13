@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { SecuritiesContext, SecuritiesContextType } from "./securities-context";
 
 type SecuritiesProviderProps = {
@@ -6,6 +6,6 @@ type SecuritiesProviderProps = {
   children: ReactNode;
 };
 
-export const SecuritiesProvider: React.FC<SecuritiesProviderProps> = ({ value, children }) => {
+export const SecuritiesProvider = ({ value, children }: SecuritiesProviderProps) => {
   return <SecuritiesContext.Provider value={value}>{children}</SecuritiesContext.Provider>;
 };
