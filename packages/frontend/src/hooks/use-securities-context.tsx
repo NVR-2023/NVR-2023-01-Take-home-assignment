@@ -6,6 +6,5 @@ export const useSecuritiesContext = () => {
   if (!context) {
     throw new Error("useSecuritiesContext must be used within a SecuritiesProvider");
   }
-
   return context;
 };
