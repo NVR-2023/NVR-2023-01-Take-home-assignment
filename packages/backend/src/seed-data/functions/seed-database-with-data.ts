@@ -18,7 +18,7 @@ const seedDatabaseWithData = async () => {
       const currentSecurity = await prisma.security.create({
         data: {
           ticker: security.ticker,
-          securityName: security.securityName,
+          securityName: security.name,
           sector: security.sector,
           country: security.country,
           trend: security.trend,

@@ -8,6 +8,6 @@ export type SecurityFrontendType = {
 };
 
 export type SecuritiesContextType = {
-  securities: SecurityFrontendType[];
+  securitiesData: SecurityFrontendType[];
   isLoading: boolean;
 };

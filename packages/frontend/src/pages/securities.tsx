@@ -1,15 +1,29 @@
-import { useSecuritiesContext } from "../hooks/use-securities-context";
+import { useSecuritiesDataContext } from "../hooks/use-securities-data-context";
+import SecuritiesTable from "../sections/securities-table";
 
 const Securities = () => {
-  const { securities, isLoading } = useSecuritiesContext();
+  const { securitiesData, isLoading } = useSecuritiesDataContext();
 
   return (
-    <>
-      <div>Securities page</div>
-      {isLoading && <p>Loading..</p>}
-      {securities &&
-        securities.map((security, index) => <div key={index}>{security.securityName}</div>)}
-    </>
+    <div className="w-full min-h-screen p-7 bg-neutral-100">
+      <div>
+        Securities page
+        {isLoading && <p>Loading..</p>}
+        {securitiesData &&
+          securitiesData.map((security, index) => (
+            <div key={index}>
+              <p>{security.securityName}</p>
+              <p>{security.ticker}</p>
+              <p>{security.sector}</p>
+              <p>{security.id}</p>
+              <p>{security.trend}</p>
+              <p>{security.country}</p>
+            </div>
+          ))}
+      </div>
+
+      <SecuritiesTable />
+    </div>
   );
 };
 

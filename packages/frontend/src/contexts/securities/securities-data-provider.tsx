@@ -1,5 +1,5 @@
 import { useEffect, useState, ReactNode } from "react";
-import { SecuritiesProvider } from "./securities-provider";
+import { SecuritiesContextProvider } from "./securities-context-provider";
 import { SecuritiesContextType, SecurityFrontendType } from "../../types/securities-types";
 
 type SecuritiesDataProviderProps = {
@@ -31,9 +31,9 @@ const SecuritiesDataProvider = ({ children }: SecuritiesDataProviderProps) => {
     fetchAllSecurities();
   }, []);
 
-  const contextValue: SecuritiesContextType = { securities, isLoading };
+  const contextValue: SecuritiesContextType = { securitiesData: securities, isLoading };
 
-  return <SecuritiesProvider value={contextValue}>{children}</SecuritiesProvider>;
+  return <SecuritiesContextProvider value={contextValue}>{children}</SecuritiesContextProvider>;
 };
 
 export default SecuritiesDataProvider;
