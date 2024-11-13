@@ -6,9 +6,12 @@ const handleGlobalError = (
   _: Request,
   response: Response,
   __: NextFunction
-) => {
+): Response => {
   const statusCode = error.status || 500;
-  return response.status(statusCode).json(error);
+  return response.status(statusCode).json({
+    message: error.message,
+    status: statusCode,
+  });
 };
 
 export default handleGlobalError;

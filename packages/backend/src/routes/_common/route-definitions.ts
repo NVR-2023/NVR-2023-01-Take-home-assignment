@@ -1,19 +1,15 @@
 import { Router } from "express";
-import createGlobalConfig from "config/create-global-config";
+import securityRouter from "routes/security/security-router";
+import priceRouter from "routes/price/price-router";
 
 type RouteDefinitionType = {
   path: string;
   router: Router;
 };
 
-const globalConfig = createGlobalConfig();
-let ROUTE_DEFINITIONS: RouteDefinitionType[] = [];
-
-if (globalConfig) {
-    ROUTE_DEFINITIONS=[
-        { path: "/securities", router: securitiesRouter },
-        { path: "/securities/:id", },
-    ]
-}
+const ROUTE_DEFINITIONS: RouteDefinitionType[] = [
+  { path: "private/securities", router: securityRouter },
+  { path: "private/securities/:id", router: priceRouter },
+];
 
 export default ROUTE_DEFINITIONS;
