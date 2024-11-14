@@ -50,8 +50,8 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
       text: `${securityName} Volume and Close Prices Over Time`,
       style: {
         color: "#333333",
-        fontSize: "18px",
-        fontWeight: "bold",
+        fontSize: "1rem",
+        fontWeight: "semibold",
       },
     },
     xAxis: {
@@ -60,12 +60,14 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
         text: "Date",
         style: {
           color: "#666666",
-          fontSize: "14px",
+          fontSize: ".75rem",
+          fontStyle: "italic",
         },
       },
       labels: {
         style: {
           color: "#666666",
+          fontSize: ".625rem",
         },
       },
       lineColor: "#cccccc",
@@ -76,7 +78,8 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
           text: "Close Price",
           style: {
             color: "#666666",
-            fontSize: "14px",
+            fontSize: ".75rem",
+            fontStyle: "italic",
           },
         },
         labels: {
@@ -91,7 +94,8 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
           text: "Volume",
           style: {
             color: "#666666",
-            fontSize: "14px",
+            fontSize: ".75rem",
+            fontStyle: "italic",
           },
         },
         labels: {
