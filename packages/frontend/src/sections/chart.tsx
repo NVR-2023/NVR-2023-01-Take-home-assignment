@@ -13,6 +13,19 @@ type ChartProps = {
 const Chart = ({ securityId, securityName }: ChartProps) => {
   const [chartData, setChartData] = useState<PriceType[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const yearSpan: string = (() => {
+    if (!chartData || chartData.length === 0) {
+      return "";
+    }
+    const sortedData = chartData.sort((firstEntry: PriceType, secondEntry: PriceType) => {
+      const firstEntryDate = new Date(firstEntry.date);
+      const secondEntryDate = new Date(secondEntry.date);
+      return firstEntryDate.getTime() - secondEntryDate.getTime();
+    });
+    const firstYear = new Date(sortedData[0].date).getFullYear();
+    const lastYear = new Date(sortedData[sortedData.length - 1].date).getFullYear();
+    return firstYear === lastYear ? `${firstYear}` : `${firstYear}-${lastYear}`;
+  })();
 
   useEffect(() => {
     const fetchSecurityPrices = async () => {
@@ -28,7 +41,6 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
             ...dataPoint,
             date: new Date(dataPoint.date).getTime(),
           }));
-
           setChartData(transformedSievedData);
         }
       } catch (error) {
@@ -60,7 +72,7 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
     xAxis: {
       type: "datetime",
       title: {
-        text: "Date",
+        text: `Date - ${yearSpan}`,
         style: {
           color: "#666666",
           fontSize: ".75rem",
