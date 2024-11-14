@@ -15,7 +15,7 @@ const ErrorToastWithRedirect = ({ redirectUrl, errorMessage }: ErrorToastWithRed
   const handleOnClose = () => {
     setIsOpen(false);
   };
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate(redirectUrl);
@@ -42,7 +42,7 @@ const ErrorToastWithRedirect = ({ redirectUrl, errorMessage }: ErrorToastWithRed
         width: "20rem",
       }}>
       <Box>
-        <p>{errorMessage}</p>
+        <p className="font-bold text-lg">{errorMessage}</p>
         <p>Redirecting…</p>
       </Box>
     </Snackbar>

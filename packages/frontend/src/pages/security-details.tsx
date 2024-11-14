@@ -1,6 +1,5 @@
 import { useSecuritiesDataContext } from "../hooks/use-securities-data-context";
 import TableContainer from "../sections/table-container";
-import Loader from "../components/loader";
 import SecurityProfile from "../components/security-profile";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -12,16 +11,18 @@ const SecurityDetail = () => {
 
   const { symbol } = useParams();
   const symbolDetails = securitiesData.find((security) => security.ticker === symbol);
+  //const securityId = symbolDetails?.id;
 
   useEffect(() => {
-    setIsSymbolValid(Boolean(symbolDetails));
+    const isSymbolValid = Boolean(symbolDetails);
+    setIsSymbolValid(isSymbolValid);
+
+
   }, [symbolDetails]);
 
   return (
     <div className="w-full min-h-screen flex justify-center p-7 bg-neutral-100">
       <TableContainer title="Security Detail">
-        {isLoading ? <Loader /> : <p>finished loading</p>}
-
         {isSymbolValid && symbolDetails ? (
           <SecurityProfile
             ticker={symbolDetails.ticker}
