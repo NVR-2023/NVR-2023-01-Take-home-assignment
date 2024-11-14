@@ -1,15 +1,15 @@
-const getHslaColorFromString = (input: string): string => {
+const getHslaColorFromString = (text: string): string => {
   const MAX_HUE = 360;
-  const MIN_SATURATION = 40;
-  const MAX_SATURATION_VARIATION = 40;
-  const MIN_LIGHTNESS = 40;
-  const MAX_LIGHTNESS_VARIATION = 40;
-  const MIN_ALPHA = 0.5;
-  const MAX_ALPHA_VARIATION = 0.5;
+  const MIN_SATURATION = 80;
+  const MAX_SATURATION_VARIATION = 20;
+  const MIN_LIGHTNESS = 20;
+  const MAX_LIGHTNESS_VARIATION = 20;
+  const MIN_ALPHA = 0.7;
+  const MAX_ALPHA_VARIATION = 0.3;
 
   let hash = 0;
-  for (let i = 0; i < input.length; i++) {
-    hash = input.charCodeAt(i) + ((hash << 5) - hash);
+  for (let i = 0; i < text.length; i++) {
+    hash = text.charCodeAt(i) + ((hash << 5) - hash);
   }
 
   const hue = Math.abs(hash) % MAX_HUE;
