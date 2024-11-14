@@ -14,8 +14,8 @@ const SecuritiesDataProvider = ({ children }: SecuritiesDataProviderProps) => {
     const fetchAllSecurities = async () => {
       setIsLoading(true);
       try {
-        const urlEndpoint = "http://localhost:3000/api/v1/private/securities";
-        const response = await fetch(urlEndpoint);
+        const endpointUrl = "http://localhost:3000/api/v1/private/securities";
+        const response = await fetch(endpointUrl);
         const data = await response.json();
         if (data.ok) {
           const sieveData = data.data;
