@@ -15,6 +15,7 @@ const PORT = GLOBAL_CONFIG.PORT;
 
 app
   .listen(PORT, () => {
+    
     console.log(`Server is listening on port ${PORT}`);
   })
   .on("error", (error: NodeJS.ErrnoException) => {

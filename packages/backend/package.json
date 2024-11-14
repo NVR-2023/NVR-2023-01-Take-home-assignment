@@ -10,10 +10,10 @@
     "db:seed": "tsx src/seed-data/functions/seed-database-with-data.ts",
     "db:studio": "npx prisma studio --schema=src/models/prisma/schema.prisma"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Node.js", "Express.js", "PostgreSQL", "Prisma ORM"],
+  "author": "Nuno Rodrigues",
   "license": "ISC",
-  "description": "",
+  "description": "Backend RESTful API exposing two GET endpoints",
   "type": "module",
   "devDependencies": {
     "@types/cors": "^2.8.17",
