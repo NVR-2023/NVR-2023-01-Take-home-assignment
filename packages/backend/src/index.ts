@@ -1,11 +1,6 @@
-import GlobalConfigType from "types/global-config-type.js";
-import createGlobalConfig from "config/create-global-config.js";
-
-import X from "config/global-config";
+import GLOBAL_CONFIG from "config/global-config";
 import app from "app";
 
-
-const GLOBAL_CONFIG: GlobalConfigType | null = createGlobalConfig();
 if (!GLOBAL_CONFIG) {
   console.error("Failed to load Global Config");
   console.error("Shutting down process");
@@ -17,7 +12,7 @@ const PORT = GLOBAL_CONFIG.PORT;
 
 app
   .listen(PORT, () => {
-    console.log("Global config successfully loaded", X)
+    console.log("Global config successfully loaded", GLOBAL_CONFIG);
     console.log(`Server is listening on port ${PORT}`);
   })
   .on("error", (error: NodeJS.ErrnoException) => {
