@@ -7,7 +7,7 @@ const Securities = () => {
   const { securitiesData, isLoading } = useSecuritiesDataContext();
 
   return (
-    <div className="w-full min-h-screen p-7 bg-neutral-100">
+    <div className="w-full min-h-screen flex justify-center p-7 bg-neutral-100">
       <TableContainer title="Securities">
         {isLoading ? <Loader /> : <SecuritiesTable data={securitiesData} />}
       </TableContainer>
