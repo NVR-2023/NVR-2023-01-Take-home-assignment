@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardContent } from "@mui/material";
+import ContainerTitle from "../components/container-title";
 import { ReactNode } from "react";
 
 type TableContainerProps = {
@@ -9,7 +10,7 @@ type TableContainerProps = {
 const TableContainer = ({ title, children }: TableContainerProps) => {
   return (
     <Card>
-      <CardHeader title={title} />
+      <CardHeader title={<ContainerTitle text={title} />} />
       <CardContent>
         <div className="px-5">{children}</div>
       </CardContent>

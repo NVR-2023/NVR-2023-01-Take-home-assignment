@@ -16,7 +16,7 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
       headerName: "Symbol",
       width: 120,
       sortable: true,
-      renderCell: (params) => <Symbol ticker={params.value} />,
+      renderCell: (params) => <Symbol text={params.value} />,
     },
     {
       field: "securityName",
