@@ -46,6 +46,9 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
       type: "line",
       backgroundColor: null,
     },
+    credits: {
+      enabled: false,
+    },
     title: {
       text: `${securityName} Volume and Close Prices Over Time`,
       style: {
