@@ -1,5 +1,11 @@
-const Trend = ({ trend }: { trend: number }) => (
-  <span style={{ color: trend > 0 ? "green" : "red" }}>{trend > 0 ? "↑" : "↓"}{trend}</span>
+type TrendProps = {
+  trend: number;
+};
+
+const Trend = ({ trend }: TrendProps) => (
+  <div className="w-12 flex justify-center" style={{ backgroundColor: trend > 0 ? "green" : "red" }}>
+    {trend}
+  </div>
 );
 
 export default Trend;
