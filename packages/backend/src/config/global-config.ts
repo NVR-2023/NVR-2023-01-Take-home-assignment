@@ -39,5 +39,5 @@ const createGlobalConfig = (): GlobalConfigType | null => {
   return config;
 };
 
-const GLOBAL_CONFIG = createGlobalConfig();
-export default GLOBAL_CONFIG;
+const X = createGlobalConfig();
+export default X;

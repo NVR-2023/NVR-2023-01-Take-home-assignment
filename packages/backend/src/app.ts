@@ -4,6 +4,7 @@ import createGlobalConfig from "config/create-global-config.js";
 import ROUTE_DEFINITIONS from "routes/_common/route-definitions.js";
 import CustomError from "./controllers/_common/response-classes/custom-error.js";
 import handleGlobalError from "./middleware/global-middleware/handle-global-error.js";
+import X from "config/global-config.js";
 
 const app = express();
 app.use(cors({}));
