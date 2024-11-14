@@ -4,8 +4,8 @@ const Homepage = () => {
   return (
     <div className="bg-purple-500 flex flex-col">
       Homepage
-      <Link to="/securities">Securities</Link>
-      <Link to="/securities/abc">Security Detail</Link>
+      <Link to="/security-list">Securities</Link>
+      <Link to="/security-detail/">Security Detail</Link>
     </div>
   );
 };

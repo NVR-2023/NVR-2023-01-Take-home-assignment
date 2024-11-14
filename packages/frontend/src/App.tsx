@@ -12,8 +12,8 @@ function App() {
       <SecuritiesDataProvider>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/securities" element={<Securities />} />
-          <Route path="/securities/:symbol" element={<SecurityDetail />} />
+          <Route path="/security-list" element={<Securities />} />
+          <Route path="/security-detail/:symbol" element={<SecurityDetail />} />
         </Routes>
       </SecuritiesDataProvider>
     </Router>

@@ -58,7 +58,7 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
 
   const navigate = useNavigate();
   const handleOnClick = (rowData: SecurityFrontendType) => {
-    navigate(`/symbol/${rowData.ticker}`);
+    navigate(`/security-detail/${rowData.ticker}`);
   };
 
   return (
