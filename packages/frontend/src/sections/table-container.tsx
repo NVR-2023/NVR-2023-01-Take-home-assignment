@@ -9,7 +9,7 @@ type TableContainerProps = {
 
 const TableContainer = ({ title, children }: TableContainerProps) => {
   return (
-    <Card sx={{ pt: "1.5rem", ms: "5rem" }}>
+    <Card sx={{ width: "100%", pt: "1.5rem", ms: "5rem" }}>
       <CardHeader title={<ContainerTitle text={title} />} sx={{ paddingLeft: "2rem" }} />
       <CardContent>
         <div className="px-5">{children}</div>
