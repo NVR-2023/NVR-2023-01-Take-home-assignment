@@ -7,7 +7,7 @@ type SymbolProps = {
 const Symbol = ({ text }: SymbolProps) => {
   return (
     <div
-      className="w-18 px-1.5 h-7 tracking-wide text-sm font-normal text-neutral-100 rounded flex justify-center items-center"
+      className="w-24 min-w-22 px-1.5 h-7 tracking-wide text-sm font-normal text-neutral-100 rounded flex justify-center items-center"
       style={{
         fontVariant: "small-caps",
         backgroundColor: getHslaColorFromString(text),

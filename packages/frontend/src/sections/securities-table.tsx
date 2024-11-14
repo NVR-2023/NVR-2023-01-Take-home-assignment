@@ -54,7 +54,7 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
     },
   ];
 
-  const paginationModel = { page: 0, pageSize: 10 };
+  const paginationModel = { page: 0, pageSize: 30 };
 
   const navigate = useNavigate();
   const handleOnClick = (rowData: SecurityFrontendType) => {
