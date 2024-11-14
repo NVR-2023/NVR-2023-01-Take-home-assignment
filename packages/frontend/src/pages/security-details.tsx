@@ -4,7 +4,7 @@ import SecurityProfile from "../components/security-profile";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ErrorToastWithRedirect from "../components/error-toast-with-redirect";
-import Graph from "../sections/graph";
+import Chart from "../sections/chart";
 
 const SecurityDetail = () => {
   const { isLoading, securitiesData } = useSecuritiesDataContext();
@@ -12,7 +12,7 @@ const SecurityDetail = () => {
 
   const { symbol } = useParams();
   const symbolDetails = securitiesData.find((security) => security.ticker === symbol);
-  //const securityId = symbolDetails?.id;
+  const securityId = symbolDetails?.id;
 
   useEffect(() => {
     const isSymbolValid = Boolean(symbolDetails);
@@ -38,7 +38,7 @@ const SecurityDetail = () => {
               />
             )
           )}
-          <Graph />
+          <Chart securityId={securityId!} />
         </div>
       </Container>
     </div>
