@@ -15,7 +15,7 @@ const createGlobalConfig = (): GlobalConfigType | null => {
     BASE_BACKEND_URL:
       process.env.BASE_BACKEND_URL ||
       (process.env.NODE_ENV === "development"
-        ? `https://localhost:${Number(process.env.PORT) || DEFAULT_PORT}`
+        ? `http://localhost:${Number(process.env.PORT) || DEFAULT_PORT}`
         : undefined),
     DATABASE_URL: process.env.DATABASE_URL,
     PULSE_API_KEY: process.env.PULSE_API_KEY,

@@ -22,9 +22,10 @@ const getPricesBySecurityId = async (request: Request, response: Response, next:
     const result = await getPricesBySecurityIdFromDatabase(parsedId);
     const successfulResponse = new SuccessfulResponse(200, "", result);
     return response.status(successfulResponse.status).json(successfulResponse);
-  } catch (error) {
-    console.error(`An error occurred while fetching securities: ${error}`);
-    const terminalError = new CustomError(500, "An error occurred while fetching securities");
+  } catch (error: unknown) {
+    const typedError = error as Error;
+    console.error("An error occurred while fetching securities:", typedError);
+    const terminalError = new CustomError(500, typedError.message);
     return next(terminalError);
   }
 };

@@ -7,9 +7,7 @@ if (!GLOBAL_CONFIG) {
   process.exit(1);
 }
 
-console.log("Global config successfully loaded");
 const PORT = GLOBAL_CONFIG.PORT;
-
 app
   .listen(PORT, () => {
     console.log("Global config successfully loaded", GLOBAL_CONFIG);
