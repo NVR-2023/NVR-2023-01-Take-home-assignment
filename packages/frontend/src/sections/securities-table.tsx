@@ -62,22 +62,24 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
   };
 
   return (
-    <Paper sx={{ height: "auto", width: "100%", px: "2rem", py: "1rem", overflow: "visible" }}>
-      <div style={{ height: "100%" }}>
-        <DataGrid
-          rows={data}
-          columns={tableColumns}
-          initialState={{ pagination: { paginationModel } }}
-          pageSizeOptions={[5, 10, 20, 30]}
-          onRowClick={(event: GridRowParams) => handleOnClick(event.row as SecurityFrontendType)}
-          sx={{
-            border: 0,
-            overflow: "visible",
-            width: "100%",
-          }}
-        />
-      </div>
-    </Paper>
+    <section className="w-full">
+      <Paper sx={{ height: "auto", width: "100%", px: "2rem", py: "1rem", overflow: "visible" }}>
+        <div style={{ height: "100%" }}>
+          <DataGrid
+            rows={data}
+            columns={tableColumns}
+            initialState={{ pagination: { paginationModel } }}
+            pageSizeOptions={[5, 10, 20, 30]}
+            onRowClick={(event: GridRowParams) => handleOnClick(event.row as SecurityFrontendType)}
+            sx={{
+              border: 0,
+              overflow: "visible",
+              width: "100%",
+            }}
+          />
+        </div>
+      </Paper>
+    </section>
   );
 };
 

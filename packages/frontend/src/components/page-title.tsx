@@ -1,21 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
 
-type ContainerTitleProps = {
+type PageTitleProps = {
   text: string;
 };
-const ContainerTitle = ({ text }: ContainerTitleProps) => {
+const PageTitle = ({ text }: PageTitleProps) => {
   const location = useLocation();
   const isAtSecurityDetail = location.pathname.includes("security-detail");
 
   return (
     <div className="flex space-x-9">
-      <div
+      <h1
         className=" tracking-wide w-[12rem] flex align-items justify-center py-0.5 rounded border-black border-[2px]"
         style={{
           fontVariationSettings: "'wght' 400",
         }}>
         {text}
-      </div>
+      </h1>
       {isAtSecurityDetail && (
         <span
           className="flex tracking-wide justify-center items-center text-sm "
@@ -30,4 +30,4 @@ const ContainerTitle = ({ text }: ContainerTitleProps) => {
   );
 };
 
-export default ContainerTitle;
+export default PageTitle;

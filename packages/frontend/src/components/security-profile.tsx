@@ -21,11 +21,11 @@ const SecurityProfile = ({ ticker, securityName, country, sector }: SecurityProf
             </p>
           </li>
           <li className="space-x-2">
-            <span className="">Sector:</span>
+            <span className="text-sm">Sector:</span>
             <span className="text-lg">{sector}</span>
           </li>
           <li className="space-x-2">
-            <span className="">Country:</span>
+            <span className="text-sm">Country:</span>
             <span className="text-lg">{country}</span>
           </li>
         </ul>

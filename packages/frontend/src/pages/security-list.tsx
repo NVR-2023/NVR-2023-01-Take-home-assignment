@@ -1,6 +1,6 @@
 import { useSecuritiesDataContext } from "../hooks/use-securities-data-context";
 import SecuritiesTable from "../sections/securities-table";
-import TableContainer from "../sections/table-container";
+import Container from "../sections/container";
 import Loader from "../components/loader";
 
 const SecurityList = () => {
@@ -8,9 +8,9 @@ const SecurityList = () => {
 
   return (
     <div className="w-full min-h-screen flex justify-center p-7 bg-neutral-100">
-      <TableContainer title="Securities">
+      <Container title="Securities">
         {isLoading ? <Loader /> : <SecuritiesTable data={securitiesData} />}
-      </TableContainer>
+      </Container>
     </div>
   );
 };
