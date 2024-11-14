@@ -16,7 +16,16 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
       headerName: "Symbol",
       width: 120,
       sortable: true,
-      renderCell: (params) => <Symbol text={params.value} />,
+      renderCell: (params) => (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            height: "100%",
+          }}>
+          <Symbol text={params.value} />
+        </div>
+      ),
     },
     {
       field: "securityName",
@@ -59,7 +68,7 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
           rows={data}
           columns={tableColumns}
           initialState={{ pagination: { paginationModel } }}
-          pageSizeOptions={[5,10,20, 30]}
+          pageSizeOptions={[5, 10, 20, 30]}
           onRowClick={(event: GridRowParams) => handleOnClick(event.row as SecurityFrontendType)}
           sx={{
             border: 0,
