@@ -6,10 +6,11 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 type ChartProps = {
+  securityName: string;
   securityId: number;
 };
 
-const Chart = ({ securityId }: ChartProps) => {
+const Chart = ({ securityId, securityName }: ChartProps) => {
   const [chartData, setChartData] = useState<PriceType[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -43,27 +44,63 @@ const Chart = ({ securityId }: ChartProps) => {
   const chartOptions = {
     chart: {
       type: "line",
+      backgroundColor: null,
     },
     title: {
-      text: "Volume and Close Prices Over Time",
+      text: `${securityName} Volume and Close Prices Over Time`,
+      style: {
+        color: "#333333",
+        fontSize: "18px",
+        fontWeight: "bold",
+      },
     },
     xAxis: {
       type: "datetime",
       title: {
         text: "Date",
+        style: {
+          color: "#666666",
+          fontSize: "14px",
+        },
       },
+      labels: {
+        style: {
+          color: "#666666",
+        },
+      },
+      lineColor: "#cccccc",
     },
     yAxis: [
       {
         title: {
           text: "Close Price",
+          style: {
+            color: "#666666",
+            fontSize: "14px",
+          },
         },
+        labels: {
+          style: {
+            color: "#666666",
+          },
+        },
+        gridLineColor: "#e6e6e6",
       },
       {
         title: {
           text: "Volume",
+          style: {
+            color: "#666666",
+            fontSize: "14px",
+          },
         },
-        opposite: true, // Display volume on the opposite side
+        labels: {
+          style: {
+            color: "#666666",
+          },
+        },
+        opposite: true,
+        gridLineColor: "#e6e6e6",
       },
     ],
     series: [
@@ -74,6 +111,7 @@ const Chart = ({ securityId }: ChartProps) => {
         tooltip: {
           valueDecimals: 2,
         },
+        color: "#4caf50",
       },
       {
         name: "Volume",
@@ -83,8 +121,14 @@ const Chart = ({ securityId }: ChartProps) => {
         tooltip: {
           valueDecimals: 0,
         },
+        color: "#2196f3",
       },
     ],
+    legend: {
+      itemStyle: {
+        color: "#333333",
+      },
+    },
   };
 
   return (

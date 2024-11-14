@@ -38,7 +38,7 @@ const SecurityDetail = () => {
               />
             )
           )}
-          <Chart securityId={securityId!} />
+          <Chart securityId={securityId!} securityName={symbolDetails?.securityName as string} />
         </div>
       </Container>
     </div>
