@@ -3,7 +3,7 @@ import SecuritiesTable from "../sections/securities-table";
 import TableContainer from "../sections/table-container";
 import Loader from "../components/loader";
 
-const Securities = () => {
+const SecurityList = () => {
   const { securitiesData, isLoading } = useSecuritiesDataContext();
 
   return (
@@ -15,4 +15,4 @@ const Securities = () => {
   );
 };
 
-export default Securities;
+export default SecurityList;
