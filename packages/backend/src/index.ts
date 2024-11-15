@@ -10,7 +10,7 @@ if (!GLOBAL_CONFIG) {
 const PORT = GLOBAL_CONFIG.PORT;
 app
   .listen(PORT, () => {
-    console.log("Global config successfully loaded", GLOBAL_CONFIG);
+    console.log("Global config successfully loaded");
     console.log(`Server is listening on port ${PORT}`);
   })
   .on("error", (error: NodeJS.ErrnoException) => {
