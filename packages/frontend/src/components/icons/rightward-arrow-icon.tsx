@@ -9,7 +9,7 @@ const RightwardArrowIcon = ({ scale = 1, color = "currentColor" }: IconComponent
       width={size}
       viewBox="0 -960 960 960"
       fill={color}>
-      <path d="m561-208-88-88 121-121H126v-126h468L473-664l88-88 273 272-273 272Z" />
+      <path d="M592-417H126v-126h466L390-745l90-89 354 354-354 354-90-89 202-202Z" />
     </svg>
   );
 };

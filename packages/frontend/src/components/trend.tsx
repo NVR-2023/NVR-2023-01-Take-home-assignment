@@ -50,7 +50,7 @@ const Trend = ({ trend }: TrendProps) => {
   const [currentBackgroundColorClass, currentTextColorClass] = backgroundClass.split(" ");
   return (
     <div
-      className={`space-x-1 tracking-wide text-sm font-bold w-16 h-8 rounded flex justify-center items-center ${currentBackgroundColorClass} ${currentTextColorClass}`}>
+      className={`space-x-1 tracking-wide text-sm font-bold w-16 h-7 rounded flex justify-center items-center ${currentBackgroundColorClass} ${currentTextColorClass}`}>
       <ArrowComponent scale={0.5} />
       <span className=" w-9 flex justify-end tabular-nums">{modifyTrendString(trend)}</span>
     </div>

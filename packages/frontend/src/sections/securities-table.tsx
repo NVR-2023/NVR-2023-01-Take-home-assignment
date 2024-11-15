@@ -32,7 +32,16 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
       headerName: "Name",
       width: 220,
       sortable: true,
+      renderCell: (params) => (
+        <div
+          style={{
+            fontWeight: 600,
+          }}>
+          {params.value}
+        </div>
+      ),
     },
+
     {
       field: "sector",
       headerName: "Sector",
