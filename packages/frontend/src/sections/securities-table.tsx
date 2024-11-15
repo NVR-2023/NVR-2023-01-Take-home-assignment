@@ -16,6 +16,7 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
       headerName: "Symbol",
       width: 120,
       sortable: true,
+      headerClassName: "custom-header",
       renderCell: (params) => (
         <div
           style={{
@@ -30,8 +31,9 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
     {
       field: "securityName",
       headerName: "Name",
-      width: 220,
+      width: 270,
       sortable: true,
+      headerClassName: "custom-header",
       renderCell: (params) => (
         <div
           style={{
@@ -47,18 +49,21 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
       headerName: "Sector",
       width: 200,
       sortable: true,
+      headerClassName: "custom-header",
     },
     {
       field: "country",
       headerName: "Country",
-      width: 200,
+      width: 150,
       sortable: true,
+      headerClassName: "custom-header",
     },
     {
       field: "trend",
       headerName: "Trend",
       width: 100,
       sortable: true,
+      headerClassName: "custom-header",
       renderCell: (params) => (
         <div className="w-full h-full flex items-center">
           <Trend trend={params.value} />
@@ -88,6 +93,9 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
               border: 0,
               overflow: "visible",
               width: "100%",
+              "& .custom-header": {
+                fontSize: "0.75rem",
+              },
             }}
           />
         </div>
