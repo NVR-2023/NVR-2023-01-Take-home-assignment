@@ -31,7 +31,7 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
     {
       field: "securityName",
       headerName: "Name",
-      width: 270,
+      width: 300,
       sortable: true,
       headerClassName: "custom-header",
       renderCell: (params) => (
@@ -47,14 +47,14 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
     {
       field: "sector",
       headerName: "Sector",
-      width: 200,
+      width: 180,
       sortable: true,
       headerClassName: "custom-header",
     },
     {
       field: "country",
       headerName: "Country",
-      width: 150,
+      width: 140,
       sortable: true,
       headerClassName: "custom-header",
     },
