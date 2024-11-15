@@ -50,7 +50,11 @@ const SecuritiesTable = ({ data }: SecurityTableProps) => {
       headerName: "Trend",
       width: 100,
       sortable: true,
-      renderCell: (params) => <Trend trend={params.value} />,
+      renderCell: (params) => (
+        <div className="w-full h-full flex items-center">
+          <Trend trend={params.value} />
+        </div>
+      ),
     },
   ];
 
