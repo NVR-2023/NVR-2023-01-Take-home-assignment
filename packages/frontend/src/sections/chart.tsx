@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@mui/material";
+import { Card } from "@mui/material";
 import { useState, useEffect } from "react";
 import Loader from "../components/loader";
 import { PriceType } from "../../../backend/src/types/data-types";
@@ -6,25 +6,35 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 type ChartProps = {
-  securityName: string;
   securityId: number;
 };
 
-const Chart = ({ securityId, securityName }: ChartProps) => {
+const Chart = ({ securityId }: ChartProps) => {
   const [chartData, setChartData] = useState<PriceType[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const yearSpan: string = (() => {
+  const dateSpan: string = (() => {
     if (!chartData || chartData.length === 0) {
       return "";
     }
+
     const sortedData = chartData.sort((firstEntry: PriceType, secondEntry: PriceType) => {
       const firstEntryDate = new Date(firstEntry.date);
       const secondEntryDate = new Date(secondEntry.date);
       return firstEntryDate.getTime() - secondEntryDate.getTime();
     });
-    const firstYear = new Date(sortedData[0].date).getFullYear();
-    const lastYear = new Date(sortedData[sortedData.length - 1].date).getFullYear();
-    return firstYear === lastYear ? `${firstYear}` : `${firstYear}-${lastYear}`;
+
+    const firstDate = new Date(sortedData[0].date);
+    const lastDate = new Date(sortedData[sortedData.length - 1].date);
+
+    const options: Intl.DateTimeFormatOptions = {
+      month: "long",
+      year: "numeric",
+    };
+
+    const firstDateFormatted = firstDate.toLocaleString("en-US", options);
+    const lastDateFormatted = lastDate.toLocaleString("en-US", options);
+
+    return `${firstDateFormatted} to ${lastDateFormatted}`;
   })();
 
   useEffect(() => {
@@ -57,26 +67,26 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
     chart: {
       type: "line",
       backgroundColor: null,
+      height: 300,
     },
     credits: {
       enabled: false,
     },
     title: {
-      text: `${securityName} Volume and Close Prices Over Time`,
+      text: `Volume and Close Prices evolution from ${dateSpan}`,
       style: {
         color: "#333333",
-        fontSize: "1rem",
-        fontWeight: "semibold",
+        fontSize: ".75rem",
+        fontWeight: 700,
       },
     },
     xAxis: {
       type: "datetime",
       title: {
-        text: `Date - ${yearSpan}`,
+        text: `Date`,
         style: {
           color: "#666666",
-          fontSize: ".75rem",
-          fontStyle: "italic",
+          fontSize: ".5rem",
         },
       },
       labels: {
@@ -87,14 +97,14 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
       },
       lineColor: "#cccccc",
     },
+
     yAxis: [
       {
         title: {
           text: "Close Price",
           style: {
             color: "#666666",
-            fontSize: ".75rem",
-            fontStyle: "italic",
+            fontSize: ".5rem",
           },
         },
         labels: {
@@ -109,8 +119,7 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
           text: "Volume",
           style: {
             color: "#666666",
-            fontSize: ".75rem",
-            fontStyle: "italic",
+            fontSize: ".5rem",
           },
         },
         labels: {
@@ -130,7 +139,7 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
         tooltip: {
           valueDecimals: 2,
         },
-        color: "#4caf50",
+        color: "#FF5733",
       },
       {
         name: "Volume",
@@ -153,7 +162,6 @@ const Chart = ({ securityId, securityName }: ChartProps) => {
   return (
     <section className="w-full">
       <Card sx={{ width: "100%", minWidth: "100%", margin: "auto" }} className="relative">
-        <CardContent>Graph</CardContent>
         {isLoading && <Loader />}
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </Card>

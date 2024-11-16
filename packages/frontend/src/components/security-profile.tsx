@@ -10,23 +10,20 @@ type SecurityProfileProps = {
 
 const SecurityProfile = ({ ticker, securityName, country, sector }: SecurityProfileProps) => {
   return (
-    <Card sx={{ width: "100%", minWidth: "100%", margin: "auto" }} className="relative">
+    <Card sx={{ width: "100%", minWidth: "100%", margin: "auto" }}>
       <CardContent>
-        <ul className="space-y-1">
-          <li className="space-y-3 mb-5">
+        <ul className="">
+          <li className="flex space-x-3 mb-3">
             <Symbol text={ticker} />
-            <p className="space-x-2">
-              <span className="">{ticker}:</span>
-              <span className="font-bold text-xl">{securityName}</span>
-            </p>
+            <span className="font-bold">{securityName}</span>
           </li>
           <li className="space-x-2">
             <span className="text-sm">Sector:</span>
-            <span className="text-lg">{sector}</span>
+            <span className="text-sm">{sector}</span>
           </li>
           <li className="space-x-2">
             <span className="text-sm">Country:</span>
-            <span className="text-lg">{country}</span>
+            <span className="text-sm">{country}</span>
           </li>
         </ul>
       </CardContent>
