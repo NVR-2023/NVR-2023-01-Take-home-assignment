@@ -73,11 +73,11 @@ const Chart = ({ securityId }: ChartProps) => {
       enabled: false,
     },
     title: {
-      text: `Volume and Close Prices evolution from ${dateSpan}`,
+      text: `Volume and Close Price evolution from ${dateSpan}`,
       style: {
         color: "#333333",
         fontSize: ".75rem",
-        fontWeight: 700,
+        fontWeight: 500,
       },
     },
     xAxis: {
