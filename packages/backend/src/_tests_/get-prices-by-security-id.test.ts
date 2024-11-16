@@ -55,7 +55,7 @@ describe("getPricesBySecurityId", () => {
     expect(error.message).toBe("Invalid Security Id");
   });
 
-  it("should handle database errors gracefully", async () => {
+  it("should handle database errors", async () => {
     mockRequest.params = { id: "123" };
     const mockError = new Error("Database connection failed");
     (getPricesBySecurityIdFromDatabase as jest.Mock).mockRejectedValue(mockError);
