@@ -35,6 +35,7 @@ const ErrorToastWithRedirect = ({ redirectUrl, errorMessage }: ErrorToastWithRed
     boxShadow: 3,
     height: "7rem",
     width: "20rem",
+    transition: "opacity 0.5s ease",
   };
 
   return (
