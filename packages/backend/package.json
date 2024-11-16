@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "tsx watch src/index.ts",
     "db:migrate": "npx prisma migrate dev --schema=src/models/prisma/schema.prisma",
     "dn:generate": "npx prisma generate --schema=src/models/prisma/schema.prisma",
     "db:seed": "tsx src/seed-data/functions/seed-database-with-data.ts",
     "db:studio": "npx prisma studio --schema=src/models/prisma/schema.prisma"
   },
-  "keywords": ["Node.js", "Express.js", "PostgreSQL", "Prisma ORM"],
+  "keywords": [
+    "Node.js",
+    "Express.js",
+    "PostgreSQL",
+    "Prisma ORM"
+  ],
   "author": "Nuno Rodrigues",
   "license": "ISC",
   "description": "Backend RESTful API exposing two GET endpoints",
@@ -18,8 +23,11 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.9.0",
+    "jest": "^29.7.0",
     "prisma": "^5.22.0",
+    "ts-jest": "^29.2.5",
     "tsx": "^4.19.2"
   },
   "dependencies": {
