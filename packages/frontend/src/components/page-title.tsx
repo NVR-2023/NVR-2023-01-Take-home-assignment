@@ -23,7 +23,7 @@ const PageTitle = ({ text }: PageTitleProps) => {
             fontVariant: "small-caps",
             fontWeight: "600",
           }}>
-          <Link to="/security-list">← back to security list</Link>
+          <Link to="/security-list">&lt;   back to security list</Link>
         </span>
       )}
     </div>

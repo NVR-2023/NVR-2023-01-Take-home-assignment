@@ -10,10 +10,10 @@ type ContainerProps = {
 const Container = ({ title, children }: ContainerProps) => {
   return (
     <section className="w-full">
-      <Card sx={{ width: "100%", pt: "1.5rem", ms: "5rem" }}>
-        <CardHeader title={<PageTitle text={title} />} sx={{ paddingLeft: "2rem" }} />
+      <Card sx={{ width: "100%", pt: "1.5rem" }}>
+        <CardHeader className="ms-1" title={<PageTitle text={title} />} sx={{ paddingLeft: "2rem" }} />
         <CardContent>
-          <div className="px-5">{children}</div>
+          <div className=" -mt-3 px-5">{children}</div>
         </CardContent>
       </Card>
     </section>
