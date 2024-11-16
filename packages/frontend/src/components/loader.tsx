@@ -1,5 +1,4 @@
 import { Snackbar, Box } from "@mui/material";
-import Spinner from "./icons/spinner";
 
 const Loader = () => {
   return (
@@ -18,10 +17,7 @@ const Loader = () => {
       }}>
       <Box>
         <div className="flex space-x-2 rounded justify-center items-center font-semibold">
-          <span>
-            <Spinner scale={.35} />
-          </span>
-          <span>Loading</span>
+          Loading…
         </div>
       </Box>
     </Snackbar>

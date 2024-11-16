@@ -11,9 +11,11 @@ const SecurityList = () => {
 
   return (
     <div className="w-full min-h-screen flex justify-center px-7 py-1 bg-neutral-100 relative">
-      {isSecuritiesDataContextLoading ? (
-        <Loader />
-      ) : (
+      {isSecuritiesDataContextLoading && <Loader />}
+      {!isSecuritiesDataContextLoading && hasSecuritiesDataContextErrors && (
+        <ErrorToastWithRedirect errorMessage="Error loading data" />
+      )}
+      {!isSecuritiesDataContextLoading && !hasSecuritiesDataContextErrors && (
         <Fade in={!isSecuritiesDataContextLoading} timeout={500}>
           <div style={{ width: "100%" }}>
             <Grow
@@ -32,10 +34,6 @@ const SecurityList = () => {
             </Grow>
           </div>
         </Fade>
-      )}
-
-      {hasSecuritiesDataContextErrors && (
-        <ErrorToastWithRedirect errorMessage="Error loading data" />
       )}
     </div>
   );

@@ -26,7 +26,7 @@ const SecurityDetails = () => {
       {!symbolDetails && (
         <ErrorToastWithRedirect
           redirectUrl={"/security-list"}
-          errorMessage={"Invalid security symbol"}
+          errorMessage={"Invalid symbol: Redirecting"}
         />
       )}
       {symbolDetails && (

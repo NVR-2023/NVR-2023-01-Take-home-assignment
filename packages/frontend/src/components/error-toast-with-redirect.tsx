@@ -38,7 +38,7 @@ const ErrorToastWithRedirect = ({ redirectUrl, errorMessage }: ErrorToastWithRed
     backgroundColor: "#fc4503",
     padding: "1rem 2rem",
     boxShadow: 3,
-    height: "7rem",
+    height: "5rem",
     width: "20rem",
     transition: "opacity 0.5s ease",
   };
@@ -52,7 +52,6 @@ const ErrorToastWithRedirect = ({ redirectUrl, errorMessage }: ErrorToastWithRed
       sx={toastStyle}>
       <Box>
         <p className="font-bold text-lg">{errorMessage}</p>
-        {redirectUrl && <p>Redirecting…</p>}{" "}
       </Box>
     </Snackbar>
   );

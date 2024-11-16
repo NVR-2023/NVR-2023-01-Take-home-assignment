@@ -17,14 +17,18 @@ const PageTitle = ({ text }: PageTitleProps) => {
         {text}
       </h1>
       {isAtSecurityDetail && (
-        <span
+        <button
           className="flex tracking-wide justify-center items-center text-sm "
           style={{
             fontVariant: "small-caps",
             fontWeight: "600",
           }}>
-          <Link to="/security-list">&lt;   back to security list</Link>
-        </span>
+          <Link
+            to="/security-list"
+            className="transition-all duration-300 transform hover:scale-110">
+            &lt; back to security list
+          </Link>
+        </button>
       )}
     </div>
   );
