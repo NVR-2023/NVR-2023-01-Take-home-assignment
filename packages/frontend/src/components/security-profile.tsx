@@ -18,12 +18,12 @@ const SecurityProfile = ({ ticker, securityName, country, sector }: SecurityProf
             <span className="font-bold">{securityName}</span>
           </li>
           <li className="space-x-2">
-            <span className="text-sm">Sector:</span>
-            <span className="text-sm">{sector}</span>
+            <span className="text-xs">Sector:</span>
+            <span className="text-sm font-semibold">{sector}</span>
           </li>
           <li className="space-x-2">
-            <span className="text-sm">Country:</span>
-            <span className="text-sm">{country}</span>
+            <span className="text-xs">Country:</span>
+            <span className="text-sm font-semibold">{country}</span>
           </li>
         </ul>
       </CardContent>

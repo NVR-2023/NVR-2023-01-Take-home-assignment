@@ -8,7 +8,7 @@ const SecurityList = () => {
   const { securitiesData, isLoading } = useSecuritiesDataContext();
 
   return (
-    <div className="w-full min-h-screen flex justify-center p-7 bg-neutral-100">
+    <div className="w-full min-h-screen flex justify-center px-7 py-1 bg-neutral-100">
       {isLoading ? (
         <Loader />
       ) : (

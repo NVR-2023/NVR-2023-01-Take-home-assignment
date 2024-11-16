@@ -21,7 +21,7 @@ const SecurityDetails = () => {
   }, [symbolDetails]);
 
   return (
-    <div className="w-full min-h-screen flex justify-center p-7 bg-neutral-100">
+    <div className="w-full min-h-screen flex justify-center px-7 py-1 bg-neutral-100">
       <Fade in={!isLoading} timeout={500}>
         <div style={{ width: "100%" }}>
           <Grow in={!isLoading} timeout={1000} style={{ transformOrigin: "top" }}>
