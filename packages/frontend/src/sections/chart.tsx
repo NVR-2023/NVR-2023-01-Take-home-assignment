@@ -25,12 +25,21 @@ const Chart = ({ securityId }: ChartProps) => {
       enabled: false,
     },
     title: {
-      text: `Volume and Close Price evolution from ${dateSpan}`,
+      text: null,
+    },
+    subtitle: {
+      text: `Volume, Close | ${dateSpan}`,
       style: {
-        color: "#333333",
-        fontSize: ".75rem",
-        fontWeight: 500,
+        fontSize: "0.625rem",
+        fontWeight: 600,
+        padding: ".5rem 1rem",
+        backgroundColor: "#e5e5e5",
+        color: "#171717",
+        borderRadius: "4px",
+        letterSpacing: "loose",
+        display: "inline-block",
       },
+      useHTML: true,
     },
     xAxis: {
       type: "datetime",
