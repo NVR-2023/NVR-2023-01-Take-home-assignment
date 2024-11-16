@@ -20,7 +20,11 @@ const getPricesBySecurityId = async (request: Request, response: Response, next:
 
   try {
     const result = await getPricesBySecurityIdFromDatabase(parsedId);
-    const successfulResponse = new SuccessfulResponse(200, "", result);
+    const successfulResponse = new SuccessfulResponse(
+      200,
+      "List of security prices successfully retrieved",
+      result
+    );
     return response.status(successfulResponse.status).json(successfulResponse);
   } catch (error: unknown) {
     const typedError = error as Error;
