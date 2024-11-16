@@ -1,6 +1,6 @@
 const HeroSection = () => {
   return (
-    <section className="flex items-center border-[3px] rounded text-[#03646d] font-bold text-5xl border-[#03646d] h-24 w-[32rem]">
+    <section className="flex items-center border-[3px] rounded-[7px] text-[#03646d] font-bold text-5xl border-[#03646d] h-24 w-[32rem]">
       <span className="w-3/5 flex h-full border-r-[3px] border-[#03646d] justify-center items-center">
         Engine AI
       </span>
