@@ -9,7 +9,7 @@ import { Grow, Fade } from "@mui/material";
 
 const SecurityDetails = () => {
   const { isLoading, securitiesData } = useSecuritiesDataContext();
-  const [isSymbolValid, setIsSymbolValid] = useState(true);
+  const [isSymbolValid, setIsSymbolValid] = useState(false);
 
   const { symbol } = useParams();
   const symbolDetails = securitiesData.find((security) => security.ticker === symbol);
