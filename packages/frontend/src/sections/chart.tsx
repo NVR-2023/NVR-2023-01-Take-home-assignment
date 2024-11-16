@@ -161,7 +161,7 @@ const Chart = ({ securityId }: ChartProps) => {
 
   return (
     <section className="w-full">
-      <Card sx={{ width: "100%", minWidth: "100%", margin: "auto" }} className="relative">
+      <Card sx={{ width: "100%", minWidth: "100%", margin: "auto" }}>
         {isLoading && <Loader />}
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </Card>
