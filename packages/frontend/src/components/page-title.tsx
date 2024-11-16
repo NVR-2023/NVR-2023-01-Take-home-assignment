@@ -26,7 +26,7 @@ const PageTitle = ({ text }: PageTitleProps) => {
           <Link
             to="/security-list"
             className="transition-all duration-300 transform hover:scale-110">
-            &lt; back to security list
+            &lt; back to securities
           </Link>
         </button>
       )}
