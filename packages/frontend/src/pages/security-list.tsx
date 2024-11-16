@@ -6,19 +6,23 @@ import ErrorToastWithRedirect from "../components/error-toast-with-redirect";
 import { Grow, Fade } from "@mui/material";
 
 const SecurityList = () => {
-  const { securitiesData, isSecurityContextLoading, hasSecurityContextErrors } = useSecuritiesDataContext();
+  const { securitiesData, isSecuritiesDataContextLoading, hasSecuritiesDataContextErrors } =
+    useSecuritiesDataContext();
 
   return (
     <div className="w-full min-h-screen flex justify-center px-7 py-1 bg-neutral-100 relative">
-      {isSecurityContextLoading ? (
+      {isSecuritiesDataContextLoading ? (
         <Loader />
       ) : (
-        <Fade in={!isSecurityContextLoading} timeout={500}>
+        <Fade in={!isSecuritiesDataContextLoading} timeout={500}>
           <div style={{ width: "100%" }}>
-            <Grow in={!isSecurityContextLoading} timeout={1000} style={{ transformOrigin: "top" }}>
+            <Grow
+              in={!isSecuritiesDataContextLoading}
+              timeout={1000}
+              style={{ transformOrigin: "top" }}>
               <div>
                 <Container title="Securities">
-                  {isSecurityContextLoading ? (
+                  {isSecuritiesDataContextLoading ? (
                     <Loader />
                   ) : (
                     <SecuritiesTable data={securitiesData} />
@@ -30,7 +34,9 @@ const SecurityList = () => {
         </Fade>
       )}
 
-      {hasSecurityContextErrors && <ErrorToastWithRedirect errorMessage="Error loading data" />}
+      {hasSecuritiesDataContextErrors && (
+        <ErrorToastWithRedirect errorMessage="Error loading data" />
+      )}
     </div>
   );
 };

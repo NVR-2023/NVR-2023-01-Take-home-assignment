@@ -17,7 +17,6 @@ const ErrorToastWithRedirect = ({ redirectUrl, errorMessage }: ErrorToastWithRed
 
   useEffect(() => {
     let timer;
-
     if (!redirectUrl) {
       timer = setTimeout(() => {
         setIsOpen(false);

@@ -1,6 +1,7 @@
 import { Snackbar, Box } from "@mui/material";
 import Spinner from "./icons/spinner";
-const ErrorToastWithRedirect = () => {
+
+const Loader = () => {
   return (
     <Snackbar
       className="rounded"
@@ -27,4 +28,4 @@ const ErrorToastWithRedirect = () => {
   );
 };
 
-export default ErrorToastWithRedirect;
+export default Loader;

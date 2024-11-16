@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { PriceType } from "../../../backend/src/types/data-types";
 
-export const useSecurityDetails = (securityId: number) => {
+export const useSecurityDetails =  (securityId: number) => {
   const [securityDetailsData, setSecurityDetailsData] = useState<PriceType[]>();
   const [isSecurityDetailsLoading, setIsSecurityDetailsLoading] = useState<boolean>(false);
   const [hasSecurityDetailsErrors, setSecurityDetailsErrors] = useState<boolean>(false);
 
-  useEffect(() => {
+   useEffect(() => {
     const fetchSecurityPrices = async () => {
       setIsSecurityDetailsLoading(true);
       setSecurityDetailsErrors(false);

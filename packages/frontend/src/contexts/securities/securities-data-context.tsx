@@ -3,6 +3,6 @@ import { SecuritiesContextType } from "../../types/securities-types";
 
 export const SecuritiesDataContext = createContext<SecuritiesContextType>({
   securitiesData: [],
-  isSecurityContextLoading: true,
-  hasSecurityContextErrors: false,
+  isSecuritiesDataContextLoading: true,
+  hasSecuritiesDataContextErrors: false,
 });

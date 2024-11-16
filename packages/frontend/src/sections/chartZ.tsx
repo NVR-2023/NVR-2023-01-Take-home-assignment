@@ -1,24 +1,19 @@
 import { Card } from "@mui/material";
-import { useState, useEffect } from "react";
-import Loader from "../components/loader";
 import { PriceType } from "../../../backend/src/types/data-types";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 type ChartProps = {
-  securityId: number;
+  securityDetailsData: PriceType[];
 };
 
-const Chart = ({ securityId }: ChartProps) => {
-  const [chartData, setChartData] = useState<PriceType[]>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [hasErrors , setHasErrors ] = useState<boolean>(false);
+const ChartZ = ({ securityDetailsData }: ChartProps) => {
   const dateSpan: string = (() => {
-    if (!chartData || chartData.length === 0) {
+    if (!securityDetailsData || securityDetailsData.length === 0) {
       return "";
     }
 
-    const sortedData = chartData.sort((firstEntry: PriceType, secondEntry: PriceType) => {
+    const sortedData = securityDetailsData.sort((firstEntry: PriceType, secondEntry: PriceType) => {
       const firstEntryDate = new Date(firstEntry.date);
       const secondEntryDate = new Date(secondEntry.date);
       return firstEntryDate.getTime() - secondEntryDate.getTime();
@@ -37,32 +32,6 @@ const Chart = ({ securityId }: ChartProps) => {
 
     return `${firstDateFormatted} to ${lastDateFormatted}`;
   })();
-
-  useEffect(() => {
-    const fetchSecurityPrices = async () => {
-      setIsLoading(true);
-      try {
-        const endpointUrl = `http://localhost:3000/api/v1/private/securities/prices/${securityId}`;
-        const response = await fetch(endpointUrl);
-        const data = await response.json();
-        if (data.ok) {
-          const sieveData = data.data;
-
-          const transformedSievedData = sieveData.map((dataPoint: PriceType) => ({
-            ...dataPoint,
-            date: new Date(dataPoint.date).getTime(),
-          }));
-          setChartData(transformedSievedData);
-        }
-      } catch (error) {
-        console.error(`Error fetching security prices: ${error}`);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchSecurityPrices();
-  }, [securityId]);
 
   const chartOptions = {
     chart: {
@@ -98,7 +67,6 @@ const Chart = ({ securityId }: ChartProps) => {
       },
       lineColor: "#cccccc",
     },
-
     yAxis: [
       {
         title: {
@@ -135,7 +103,7 @@ const Chart = ({ securityId }: ChartProps) => {
     series: [
       {
         name: "Close Price",
-        data: chartData?.map((data) => [data.date, data.close]),
+        data: securityDetailsData.map((data) => [new Date(data.date).getTime(), data.close]),
         yAxis: 0,
         tooltip: {
           valueDecimals: 2,
@@ -144,7 +112,7 @@ const Chart = ({ securityId }: ChartProps) => {
       },
       {
         name: "Volume",
-        data: chartData?.map((data) => [data.date, data.volume]),
+        data: securityDetailsData.map((data) => [new Date(data.date).getTime(), data.volume]),
         yAxis: 1,
         type: "line",
         tooltip: {
@@ -163,11 +131,10 @@ const Chart = ({ securityId }: ChartProps) => {
   return (
     <section className="w-full">
       <Card sx={{ width: "100%", minWidth: "100%", margin: "auto" }}>
-        {isLoading && <Loader />}
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </Card>
     </section>
   );
 };
 
-export default Chart;
+export default ChartZ;

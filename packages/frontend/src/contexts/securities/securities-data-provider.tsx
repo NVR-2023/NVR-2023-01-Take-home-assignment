@@ -37,8 +37,8 @@ const SecuritiesDataProvider = ({ children }: SecuritiesDataProviderProps) => {
 
   const contextValue: SecuritiesContextType = {
     securitiesData: securities,
-    isSecurityContextLoading: isLoading,
-    hasSecurityContextErrors: hasErrors,
+    isSecuritiesDataContextLoading: isLoading,
+    hasSecuritiesDataContextErrors: hasErrors,
   };
 
   return <SecuritiesContextProvider value={contextValue}>{children}</SecuritiesContextProvider>;

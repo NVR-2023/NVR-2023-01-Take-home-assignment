@@ -9,6 +9,6 @@ export type SecurityFrontendType = {
 
 export type SecuritiesContextType = {
   securitiesData: SecurityFrontendType[];
-  isSecurityContextLoading: boolean;
-  hasSecurityContextErrors?: boolean;
+  isSecuritiesDataContextLoading: boolean;
+  hasSecuritiesDataContextErrors?: boolean;
 };
