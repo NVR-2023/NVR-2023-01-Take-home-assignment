@@ -5,8 +5,9 @@ const HeroSection = () => {
         Engine AI
       </span>
       <span className="w-2/5 h-full flex flex-col">
-        <p className="text-sm h-2/5 w-full flex ps-2 items-center font-[800] tracking-wider">
-          Take-home assignment
+        <p 
+        className="text-sm h-2/5 w-full flex ps-2 items-center font-[800] tracking-wider">
+          <h1>Take-home assignment</h1>
         </p>
         <p className="text-[1.2rem] space-x-2 h-3/5 border-t-[3px] border-[#03646d] flex items-center ps-2 font-extrabold">
           <span>By Nuno Rodrigues</span>
