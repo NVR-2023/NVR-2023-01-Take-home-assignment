@@ -3,7 +3,9 @@ import Container from "../sections/container";
 import SecurityProfile from "../components/security-profile";
 import { useParams } from "react-router-dom";
 import ErrorToastWithRedirect from "../components/error-toast-with-redirect";
+
 import Chart from "../sections/chart";
+
 import { Grow, Fade } from "@mui/material";
 
 const SecurityDetails = () => {

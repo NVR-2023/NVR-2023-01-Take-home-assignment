@@ -1,69 +1,20 @@
 import { Card } from "@mui/material";
-import { useState, useEffect } from "react";
 import Loader from "../components/loader";
-import { PriceType } from "../../../backend/src/types/data-types";
+import ErrorToastWithRedirect from "../components/error-toast-with-redirect";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+
+import getDateSpan from "../utils/get-sate-span";
+import useSecurityDetails from "../hooks/use-security-details";
 
 type ChartProps = {
   securityId: number;
 };
 
 const Chart = ({ securityId }: ChartProps) => {
-  const [chartData, setChartData] = useState<PriceType[]>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [hasErrors , setHasErrors ] = useState<boolean>(false);
-  const dateSpan: string = (() => {
-    if (!chartData || chartData.length === 0) {
-      return "";
-    }
-
-    const sortedData = chartData.sort((firstEntry: PriceType, secondEntry: PriceType) => {
-      const firstEntryDate = new Date(firstEntry.date);
-      const secondEntryDate = new Date(secondEntry.date);
-      return firstEntryDate.getTime() - secondEntryDate.getTime();
-    });
-
-    const firstDate = new Date(sortedData[0].date);
-    const lastDate = new Date(sortedData[sortedData.length - 1].date);
-
-    const options: Intl.DateTimeFormatOptions = {
-      month: "long",
-      year: "numeric",
-    };
-
-    const firstDateFormatted = firstDate.toLocaleString("en-US", options);
-    const lastDateFormatted = lastDate.toLocaleString("en-US", options);
-
-    return `${firstDateFormatted} to ${lastDateFormatted}`;
-  })();
-
-  useEffect(() => {
-    const fetchSecurityPrices = async () => {
-      setIsLoading(true);
-      try {
-        const endpointUrl = `http://localhost:3000/api/v1/private/securities/prices/${securityId}`;
-        const response = await fetch(endpointUrl);
-        const data = await response.json();
-        if (data.ok) {
-          const sieveData = data.data;
-
-          const transformedSievedData = sieveData.map((dataPoint: PriceType) => ({
-            ...dataPoint,
-            date: new Date(dataPoint.date).getTime(),
-          }));
-          setChartData(transformedSievedData);
-        }
-      } catch (error) {
-        console.error(`Error fetching security prices: ${error}`);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchSecurityPrices();
-  }, [securityId]);
-
+  const { isSecurityDetailsLoading, hasSecurityDetailsErrors, securityDetailsData } =
+    useSecurityDetails(securityId);
+  const dateSpan = getDateSpan(securityDetailsData!);
   const chartOptions = {
     chart: {
       type: "line",
@@ -135,7 +86,7 @@ const Chart = ({ securityId }: ChartProps) => {
     series: [
       {
         name: "Close Price",
-        data: chartData?.map((data) => [data.date, data.close]),
+        data: securityDetailsData?.map((data) => [data.date, data.close]),
         yAxis: 0,
         tooltip: {
           valueDecimals: 2,
@@ -144,7 +95,7 @@ const Chart = ({ securityId }: ChartProps) => {
       },
       {
         name: "Volume",
-        data: chartData?.map((data) => [data.date, data.volume]),
+        data: securityDetailsData?.map((data) => [data.date, data.volume]),
         yAxis: 1,
         type: "line",
         tooltip: {
@@ -163,7 +114,13 @@ const Chart = ({ securityId }: ChartProps) => {
   return (
     <section className="w-full">
       <Card sx={{ width: "100%", minWidth: "100%", margin: "auto" }}>
-        {isLoading && <Loader />}
+        {isSecurityDetailsLoading && <Loader />}
+        {!isSecurityDetailsLoading && hasSecurityDetailsErrors && (
+          <ErrorToastWithRedirect
+            redirectUrl={"/security-list"}
+            errorMessage={"Error loading security data"}
+          />
+        )}
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </Card>
     </section>
