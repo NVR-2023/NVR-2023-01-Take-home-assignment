@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import CtaButton from "../components/cta-button";
+import HeroSection from "../components/hero-section";
 
 const Homepage = () => {
   return (
-    <div className="bg-purple-500 flex flex-col">
-      Homepage
-      <Link to="/security-list">Securities</Link>
-      <Link to="/security-detail/">Security Detail</Link>
+    <div className="bg-neutral-100 space-y-6 flex-colum justify-center items-center h-screen flex flex-col">
+      <HeroSection />
+      <CtaButton />
     </div>
   );
 };

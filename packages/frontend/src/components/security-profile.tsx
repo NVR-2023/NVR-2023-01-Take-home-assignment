@@ -13,7 +13,7 @@ const SecurityProfile = ({ ticker, securityName, country, sector }: SecurityProf
     <Card sx={{ width: "100%", minWidth: "100%", margin: "auto" }}>
       <CardContent>
         <ul className="">
-          <li className="flex space-x-3">
+          <li className="flex space-x-3 mb-3">
             <Symbol text={ticker} />
             <span className="font-bold">{securityName}</span>
           </li>
