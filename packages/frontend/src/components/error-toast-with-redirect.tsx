@@ -8,7 +8,6 @@ type ErrorToastWithRedirectProps = {
 };
 
 const ErrorToastWithRedirect = ({ redirectUrl, errorMessage }: ErrorToastWithRedirectProps) => {
-  
   const TIME_TOAST_IS_SHOWN = 3000;
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -17,10 +16,17 @@ const ErrorToastWithRedirect = ({ redirectUrl, errorMessage }: ErrorToastWithRed
   };
 
   useEffect(() => {
-    if (!redirectUrl) return;
-    const timer = setTimeout(() => {
-      navigate(redirectUrl);
-    }, TIME_TOAST_IS_SHOWN);
+    let timer;
+
+    if (!redirectUrl) {
+      timer = setTimeout(() => {
+        setIsOpen(false);
+      }, TIME_TOAST_IS_SHOWN);
+    } else {
+      timer = setTimeout(() => {
+        navigate(redirectUrl);
+      }, TIME_TOAST_IS_SHOWN);
+    }
 
     return () => clearTimeout(timer);
   }, [navigate, redirectUrl]);

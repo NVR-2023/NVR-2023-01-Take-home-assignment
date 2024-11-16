@@ -8,7 +8,7 @@ import Chart from "../sections/chart";
 import { Grow, Fade } from "@mui/material";
 
 const SecurityDetails = () => {
-  const { isLoading, securitiesData } = useSecuritiesDataContext();
+  const { isSecurityContextLoading: isLoading, securitiesData } = useSecuritiesDataContext();
   const [isSymbolValid, setIsSymbolValid] = useState(false);
 
   const { symbol } = useParams();
