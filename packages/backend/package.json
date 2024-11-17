@@ -7,7 +7,7 @@
     "dev": "tsx watch src/index.ts",
     "db:migrate": "npx prisma migrate dev --schema=src/models/prisma/schema.prisma",
     "db:generate": "npx prisma generate --schema=src/models/prisma/schema.prisma",
-    "db:seed": "tsx src/seed-data/functions/seed-database-with-data.ts",
+    "db:seed": "tsx src/models/seed-data/functions/seed-database-with-data.ts",
     "db:studio": "npx prisma studio --schema=src/models/prisma/schema.prisma"
   },
   "keywords": [
