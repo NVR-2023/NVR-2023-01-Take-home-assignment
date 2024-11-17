@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "install:all": "npm install --workspaces && npm run db:generate --workspace=backend && npm run dev",
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "npx concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd packages/backend && npm run dev",
     "dev:frontend": "cd packages/frontend && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
