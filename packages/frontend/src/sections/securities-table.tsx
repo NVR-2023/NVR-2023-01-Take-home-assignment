@@ -10,67 +10,68 @@ type SecurityTableProps = {
 };
 
 const SecuritiesTable = ({ data }: SecurityTableProps) => {
-  const tableColumns: GridColDef[] = [
-    {
-      field: "ticker",
-      headerName: "Symbol",
-      width: 120,
-      sortable: true,
-      headerClassName: "custom-header",
-      renderCell: (params) => (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            height: "100%",
-          }}>
-          <Symbol text={params.value} />
-        </div>
-      ),
-    },
-    {
-      field: "securityName",
-      headerName: "Name",
-      width: 300,
-      sortable: true,
-      headerClassName: "custom-header",
-      renderCell: (params) => (
-        <div
-          style={{
-            fontWeight: 600,
-          }}>
-          {params.value}
-        </div>
-      ),
-    },
 
-    {
-      field: "sector",
-      headerName: "Sector",
-      width: 180,
-      sortable: true,
-      headerClassName: "custom-header",
-    },
-    {
-      field: "country",
-      headerName: "Country",
-      width: 140,
-      sortable: true,
-      headerClassName: "custom-header",
-    },
-    {
-      field: "trend",
-      headerName: "Trend",
-      width: 100,
-      sortable: true,
-      headerClassName: "custom-header",
-      renderCell: (params) => (
-        <div className="w-full h-full flex items-center">
-          <Trend trend={params.value} />
-        </div>
-      ),
-    },
-  ];
+  const tableColumns: GridColDef[] = [
+  {
+    field: "ticker",
+    headerName: "Symbol",
+    flex: 0.2,
+    sortable: true,
+    headerClassName: "custom-header",
+    renderCell: (params) => (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          height: "100%",
+        }}>
+        <Symbol text={params.value} />
+      </div>
+    ),
+  },
+  {
+    field: "securityName",
+    headerName: "Name",
+    flex: 0.5,
+    sortable: true,
+    headerClassName: "custom-header",
+    renderCell: (params) => (
+      <div
+        style={{
+          fontWeight: 600,
+        }}>
+        {params.value}
+      </div>
+    ),
+  },
+  {
+    field: "sector",
+    headerName: "Sector",
+    flex: 0.3,
+    sortable: true,
+    headerClassName: "custom-header",
+  },
+  {
+    field: "country",
+    headerName: "Country",
+    flex: 0.25,
+    sortable: true,
+    headerClassName: "custom-header",
+  },
+  {
+    field: "trend",
+    headerName: "Trend",
+    flex: 0.15,
+    sortable: true,
+    headerClassName: "custom-header",
+    renderCell: (params) => (
+      <div className="w-full h-full flex items-center">
+        <Trend trend={params.value} />
+      </div>
+    ),
+  },
+];
+
 
   const paginationModel = { page: 0, pageSize: 30 };
 
