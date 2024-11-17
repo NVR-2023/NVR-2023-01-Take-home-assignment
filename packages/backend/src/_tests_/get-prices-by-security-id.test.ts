@@ -35,7 +35,11 @@ describe("getPricesBySecurityId", () => {
 
     expect(mockResponse.status).toHaveBeenCalledWith(200);
     expect(mockResponse.json).toHaveBeenCalledWith(
-      new SuccessfulResponse(200, "List of security prices successfully retrieved", mockResult)
+      new SuccessfulResponse(
+        200,
+        "List of security details and prices successfully retrieved",
+        mockResult
+      )
     );
     expect(mockNext).not.toHaveBeenCalled();
   });
