@@ -22,7 +22,7 @@ describe("getPricesBySecurityId", () => {
     jest.clearAllMocks();
   });
 
-  it("should return a successful response when the ID is valid and database function succeeds", async () => {
+  it("should return a successful response when the Id is valid and database function succeeds", async () => {
     mockRequest.params = { id: "123" };
     const mockResult = [{ price: 100, date: "2024-01-01" }];
     (getPricesBySecurityIdFromDatabase as jest.Mock).mockResolvedValue(mockResult);
@@ -40,7 +40,7 @@ describe("getPricesBySecurityId", () => {
     expect(mockNext).not.toHaveBeenCalled();
   });
 
-  it("should return a validation error when the ID is invalid", async () => {
+  it("should return a validation error if the ID is invalid", async () => {
     mockRequest.params = { id: "abc" };
 
     await getPricesBySecurityId(
