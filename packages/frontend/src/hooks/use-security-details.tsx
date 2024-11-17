@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { PriceType } from "../../../backend/src/types/data-types";
 
-const useSecurityDetails =  (securityId: number) => {
+const useSecurityDetails = (securityId: number) => {
   const [securityDetailsData, setSecurityDetailsData] = useState<PriceType[]>();
   const [isSecurityDetailsLoading, setIsSecurityDetailsLoading] = useState<boolean>(false);
   const [hasSecurityDetailsErrors, setSecurityDetailsErrors] = useState<boolean>(false);
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchSecurityPrices = async () => {
       setIsSecurityDetailsLoading(true);
       setSecurityDetailsErrors(false);
@@ -21,7 +21,7 @@ const useSecurityDetails =  (securityId: number) => {
 
         const data = await response.json();
         if (data.ok) {
-          const transformedSievedData = data.data.map((dataPoint: PriceType) => ({
+          const transformedSievedData = data.data.prices.map((dataPoint: PriceType) => ({
             ...dataPoint,
             date: new Date(dataPoint.date).getTime(),
           }));

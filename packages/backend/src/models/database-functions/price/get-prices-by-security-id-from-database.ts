@@ -1,36 +1,39 @@
-import { PriceType } from "types/data-types";
+import { PriceType, SecurityType } from "types/data-types";
 import prisma from "models/prisma/prisma";
+
+type SecurityWithoutPricesType = Omit<SecurityType, "prices">;
 
 const getPricesBySecurityIdFromDatabase = async (
   targetSecurityId: number
-): Promise<PriceType[]> => {
+): Promise<{ security: SecurityWithoutPricesType; prices: PriceType[] }> => {
   try {
-    const isSoftDeleted = Boolean(
-      (
-        await prisma.security.findUnique({
-          where: { id: targetSecurityId },
-        })
-      )?.deletedAt
-    );
-
-    if (isSoftDeleted) {
-      throw new Error(`Security with id: ${targetSecurityId} is deleted`);
-    }
-
-    const result = await prisma.price.findMany({
+    const securityWithPrices = await prisma.security.findUnique({
       where: {
-        securityId: targetSecurityId,
+        id: targetSecurityId,
+        deletedAt: null,
+      },
+      select: {
+        id: true,
+        ticker: true,
+        securityName: true,
+        sector: true,
+        country: true,
+        trend: true,
+        prices: true, 
       },
     });
-    if (result.length === 0) {
-      throw new Error(`No prices found for securityId: ${targetSecurityId}`);
+
+    if (!securityWithPrices) {
+      throw new Error(`Security with id: ${targetSecurityId} does not exist`);
     }
-    const parsedResult: PriceType[] = result.map((price) => ({
+
+    const { prices, ...security } = securityWithPrices;
+    const parsedPrices: PriceType[] = prices.map((price) => ({
       ...price,
       close: price.close.toNumber(),
     }));
 
-    return parsedResult;
+    return { security, prices: parsedPrices };
   } catch (error) {
     console.error(`Error retrieving prices by security id: ${error}`);
     throw error;

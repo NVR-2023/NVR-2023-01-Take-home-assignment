@@ -22,7 +22,7 @@ const getPricesBySecurityId = async (request: Request, response: Response, next:
     const result = await getPricesBySecurityIdFromDatabase(parsedId);
     const successfulResponse = new SuccessfulResponse(
       200,
-      "List of security prices successfully retrieved",
+      "List of security details and prices successfully retrieved",
       result
     );
     return response.status(successfulResponse.status).json(successfulResponse);
