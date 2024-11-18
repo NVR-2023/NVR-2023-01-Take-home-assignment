@@ -44,7 +44,7 @@ describe("getPricesBySecurityId", () => {
     expect(mockNext).not.toHaveBeenCalled();
   });
 
-  it("should return a validation error if the ID is invalid", async () => {
+  it("should return a validation error if the Id is invalid", async () => {
     mockRequest.params = { id: "abc" };
 
     await getPricesBySecurityId(
