@@ -6,7 +6,7 @@
     "packages/backend"
   ],
   "version": "1.0.0",
-  "description": "Engine AI take-home assignment by Nuno Rodrigues, November 2024",
+  "description": "Take-home assignment by Nuno Rodrigues, November 2024",
   "main": "index.js",
   "scripts": {
     "install:all": "npm install --workspaces && npm run db:generate --workspace=backend && npm run dev",
